@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primary 5 English Grammar Quest - Relative Clauses & Prepositions</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        },
+                        accent: {
+                            amber: '#f59e0b',
+                            emerald: '#10b981',
+                            rose: '#f43f5e',
+                            sky: '#0284c7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .font-display {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+
+        /* Pulse and Strike-through Animations */
+        @keyframes strikeout {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        .strike-animated {
+            position: relative;
+        }
+        .strike-animated::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #ef4444;
+            animation: strikeout 0.6s ease-in-out forwards;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.6); opacity: 0; }
+            70% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .pop-in {
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .tile-shadow {
+            box-shadow: 0 4px 0 0 #4338ca;
+        }
+        .tile-shadow:active {
+            box-shadow: 0 0 0 0 #4338ca;
+            transform: translateY(4px);
+        }
+
+        .tile-amber-shadow {
+            box-shadow: 0 4px 0 0 #d97706;
+        }
+        .tile-amber-shadow:active {
+            box-shadow: 0 0 0 0 #d97706;
+            transform: translateY(4px);
+        }
+    </style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- APP HEADER / NAVBAR -->
+    <header class="bg-indigo-700 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <!-- Brand & Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('lesson1')">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-amber-400 rounded-2xl flex items-center justify-center text-indigo-900 font-display font-bold text-2xl shadow-md transform -rotate-3">
+                        P5
+                    </div>
+                    <div>
+                        <h1 class="font-display font-bold text-lg sm:text-2xl leading-tight tracking-wide text-white">Grammar Quest</h1>
+                        <p class="text-xs text-indigo-200 hidden sm:block">Primary 5 Hong Kong English Hub</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="hidden md:flex space-x-1 lg:space-x-2">
+                    <button onclick="switchTab('lesson1')" id="nav-lesson1" class="tab-btn px-3 py-2 rounded-xl text-xs lg:text-sm font-semibold transition flex items-center space-x-1 bg-indigo-800 text-white">
+                        <span>💡</span> <span>1. "Who" Clause</span>
+                    </button>
+                    <button onclick="switchTab('quiz1')" id="nav-quiz1" class="tab-btn px-3 py-2 rounded-xl text-xs lg:text-sm font-semibold text-indigo-100 hover:bg-indigo-600 transition flex items-center space-x-1">
+                        <span>🧩</span> <span>2. Sentence Unscramble (45Q)</span>
+                    </button>
+                    <button onclick="switchTab('lesson2')" id="nav-lesson2" class="tab-btn px-3 py-2 rounded-xl text-xs lg:text-sm font-semibold text-indigo-100 hover:bg-indigo-600 transition flex items-center space-x-1">
+                        <span>💡</span> <span>3. "With" vs "In"</span>
+                    </button>
+                    <button onclick="switchTab('quiz2')" id="nav-quiz2" class="tab-btn px-3 py-2 rounded-xl text-xs lg:text-sm font-semibold text-indigo-100 hover:bg-indigo-600 transition flex items-center space-x-1">
+                        <span>🎯</span> <span>4. Preposition Quiz (45Q)</span>
+                    </button>
+                    <button onclick="switchTab('dashboard')" id="nav-dashboard" class="tab-btn px-3 py-2 rounded-xl text-xs lg:text-sm font-semibold text-indigo-100 hover:bg-indigo-600 transition flex items-center space-x-1">
+                        <span>🏆</span> <span>5. Dashboard & Certificate</span>
+                    </button>
+                </nav>
+
+                <!-- User Stats Header Widget -->
+                <div class="flex items-center space-x-3 bg-indigo-800/80 px-3 py-1.5 rounded-full border border-indigo-500/30">
+                    <div class="flex items-center space-x-1 text-amber-300 font-bold text-sm sm:text-base">
+                        <span>⭐</span>
+                        <span id="user-stars">0</span>
+                    </div>
+                    <div class="h-4 w-px bg-indigo-500"></div>
+                    <div class="flex items-center space-x-1 text-rose-300 font-bold text-sm sm:text-base">
+                        <span>🔥</span>
+                        <span id="user-streak">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Bar (Bottom / Scrollable) -->
+        <div class="md:hidden bg-indigo-800 px-2 py-2 flex space-x-1 overflow-x-auto border-t border-indigo-600/50">
+            <button onclick="switchTab('lesson1')" id="mobile-nav-lesson1" class="mobile-tab px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-white text-indigo-900">1. Who Clause</button>
+            <button onclick="switchTab('quiz1')" id="mobile-nav-quiz1" class="mobile-tab px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap text-indigo-200">2. Jumble (45Q)</button>
+            <button onclick="switchTab('lesson2')" id="mobile-nav-lesson2" class="mobile-tab px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap text-indigo-200">3. With / In</button>
+            <button onclick="switchTab('quiz2')" id="mobile-nav-quiz2" class="mobile-tab px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap text-indigo-200">4. Quiz (45Q)</button>
+            <button onclick="switchTab('dashboard')" id="mobile-nav-dashboard" class="mobile-tab px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap text-indigo-200">5. Dashboard</button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full">
+
+        <!-- ========================================== -->
+        <!-- TAB 1: RELATIVE CLAUSE ("WHO") CONCEPT LESSON -->
+        <!-- ========================================== -->
+        <section id="tab-lesson1" class="tab-content space-y-8">
+            <!-- Header Banner -->
+            <div class="bg-gradient-to-r from-indigo-600 to-indigo-800 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl font-display font-bold">WHO</div>
+                <div class="max-w-2xl">
+                    <span class="inline-block bg-indigo-500/40 text-amber-300 text-xs sm:text-sm font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">HK Primary 5 Grammar Unit 1</span>
+                    <h2 class="font-display text-2xl sm:text-4xl font-bold mb-2">Joining Sentences with Relative Pronoun "WHO"</h2>
+                    <p class="text-indigo-100 text-sm sm:text-base leading-relaxed">
+                        Learn how to combine two short sentences into one smooth sentence using the relative pronoun <span class="bg-amber-400 text-indigo-950 font-bold px-2 py-0.5 rounded">who</span>. "Who" replaces a repeated person (like a name or noun)!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Animated Sentence Joiner Demo Card -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-slate-200 space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+                    <div>
+                        <h3 class="font-display font-bold text-xl sm:text-2xl text-slate-800 flex items-center gap-2">
+                            <span>🎬</span> Interactive Sentence Joining Animation
+                        </h3>
+                        <p class="text-slate-500 text-xs sm:text-sm">Click Next Step to watch step-by-step how Sentence 1 & Sentence 2 merge!</p>
+                    </div>
+                    <!-- Step Indicators -->
+                    <div class="flex items-center space-x-2 bg-slate-100 px-3 py-1.5 rounded-full">
+                        <span class="text-xs font-bold text-slate-500 mr-1">Step:</span>
+                        <span id="step-dot-1" class="w-3 h-3 rounded-full bg-indigo-600 transition-all"></span>
+                        <span id="step-dot-2" class="w-3 h-3 rounded-full bg-slate-300 transition-all"></span>
+                        <span id="step-dot-3" class="w-3 h-3 rounded-full bg-slate-300 transition-all"></span>
+                        <span id="step-dot-4" class="w-3 h-3 rounded-full bg-slate-300 transition-all"></span>
+                        <span id="step-dot-5" class="w-3 h-3 rounded-full bg-slate-300 transition-all"></span>
+                    </div>
+                </div>
+
+                <!-- Visual Animation Canvas/Stage -->
+                <div class="bg-slate-900 rounded-2xl p-6 sm:p-10 text-white min-h-[220px] flex flex-col justify-center items-center relative overflow-hidden border-4 border-indigo-100">
+                    
+                    <!-- Dynamic Animation Stage Content -->
+                    <div id="animation-stage" class="w-full text-center space-y-4">
+                        <!-- Content rendered dynamically via JS based on step -->
+                    </div>
+
+                    <!-- Visual Connector Arrow Overlay for Step 5 -->
+                    <div id="connector-arrow-box" class="hidden absolute top-2 left-1/2 -translate-x-1/2 w-full max-w-lg px-4 pointer-events-none">
+                        <svg class="w-full h-12 text-amber-400" viewBox="0 0 300 40" fill="none" stroke="currentColor">
+                            <path d="M 220 30 Q 150 5 80 30" stroke-width="3" stroke-dasharray="4 4" fill="none" />
+                            <polygon points="80,30 88,23 88,35" fill="currentColor" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Animation Explanatory Message Box -->
+                <div id="animation-explanation" class="bg-indigo-50 border-l-4 border-indigo-600 p-4 rounded-r-xl text-indigo-900 text-sm sm:text-base font-medium flex items-start space-x-3">
+                    <span class="text-2xl">💡</span>
+                    <span id="explanation-text" class="self-center">Click "Next Step" below to begin the step-by-step transformation!</span>
+                </div>
+
+                <!-- Animation Controls -->
+                <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+                    <button onclick="prevAnimStep()" id="btn-prev-anim" class="px-4 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-xl text-sm transition disabled:opacity-40 disabled:cursor-not-allowed">
+                        ⬅️ Previous
+                    </button>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="resetAnim()" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold rounded-xl text-sm transition">
+                            🔄 Restart
+                        </button>
+                        <button onclick="autoPlayAnim()" id="btn-autoplay-anim" class="px-4 py-2.5 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl text-sm transition shadow-sm">
+                            ▶️ Auto Play
+                        </button>
+                    </div>
+                    <button onclick="nextAnimStep()" id="btn-next-anim" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-sm transition shadow-md">
+                        Next Step ➡️
+                    </button>
+                </div>
+            </div>
+
+            <!-- Target Sentences Analysis Breakdown -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-slate-200 space-y-6">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-display font-bold text-xl sm:text-2xl text-slate-800 flex items-center gap-2">
+                        <span>🔍</span> Grammar Breakdown: Sentence Analysis
+                    </h3>
+                    <p class="text-slate-500 text-xs sm:text-sm">Click on any sentence card to inspect what <strong>"who"</strong> refers back to!</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Sentence 1 -->
+                    <div class="p-5 rounded-2xl bg-indigo-50/50 border-2 border-indigo-100 hover:border-indigo-400 transition cursor-pointer group" onclick="highlightSentence(1)">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold bg-indigo-600 text-white px-2.5 py-0.5 rounded-full">Example 1</span>
+                            <span class="text-xs text-indigo-600 font-semibold group-hover:underline">Click to detail</span>
+                        </div>
+                        <p class="text-slate-800 font-medium text-base sm:text-lg">
+                            <strong class="text-indigo-700">Pam</strong> is the girl <span class="bg-amber-300 text-indigo-950 px-1.5 py-0.5 rounded font-bold">who</span> is waving at the audience.
+                        </p>
+                        <div class="mt-3 text-xs sm:text-sm text-slate-600 bg-white p-3 rounded-xl border border-indigo-100 space-y-1">
+                            <div>• <strong>Antecedent (Person):</strong> <span class="text-indigo-600 font-bold">the girl (Pam)</span></div>
+                            <div>• <strong>"who" refers to:</strong> <span class="text-amber-700 font-bold">Pam</span></div>
+                            <div>• <strong>Action Clause:</strong> is waving at the audience.</div>
+                        </div>
+                    </div>
+
+                    <!-- Sentence 2 -->
+                    <div class="p-5 rounded-2xl bg-indigo-50/50 border-2 border-indigo-100 hover:border-indigo-400 transition cursor-pointer group" onclick="highlightSentence(2)">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold bg-indigo-600 text-white px-2.5 py-0.5 rounded-full">Example 2</span>
+                            <span class="text-xs text-indigo-600 font-semibold group-hover:underline">Click to detail</span>
+                        </div>
+                        <p class="text-slate-800 font-medium text-base sm:text-lg">
+                            <strong class="text-indigo-700">Principal Lam</strong> is the man <span class="bg-amber-300 text-indigo-950 px-1.5 py-0.5 rounded font-bold">who</span> is giving a speech.
+                        </p>
+                        <div class="mt-3 text-xs sm:text-sm text-slate-600 bg-white p-3 rounded-xl border border-indigo-100 space-y-1">
+                            <div>• <strong>Antecedent (Person):</strong> <span class="text-indigo-600 font-bold">the man (Principal Lam)</span></div>
+                            <div>• <strong>"who" refers to:</strong> <span class="text-amber-700 font-bold">Principal Lam</span></div>
+                            <div>• <strong>Action Clause:</strong> is giving a speech.</div>
+                        </div>
+                    </div>
+
+                    <!-- Sentence 3 -->
+                    <div class="p-5 rounded-2xl bg-indigo-50/50 border-2 border-indigo-100 hover:border-indigo-400 transition cursor-pointer group" onclick="highlightSentence(3)">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold bg-indigo-600 text-white px-2.5 py-0.5 rounded-full">Example 3</span>
+                            <span class="text-xs text-indigo-600 font-semibold group-hover:underline">Click to detail</span>
+                        </div>
+                        <p class="text-slate-800 font-medium text-base sm:text-lg">
+                            <strong class="text-indigo-700">Tim</strong> is the boy <span class="bg-amber-300 text-indigo-950 px-1.5 py-0.5 rounded font-bold">who</span> is hugging his classmates.
+                        </p>
+                        <div class="mt-3 text-xs sm:text-sm text-slate-600 bg-white p-3 rounded-xl border border-indigo-100 space-y-1">
+                            <div>• <strong>Antecedent (Person):</strong> <span class="text-indigo-600 font-bold">the boy (Tim)</span></div>
+                            <div>• <strong>"who" refers to:</strong> <span class="text-amber-700 font-bold">Tim</span></div>
+                            <div>• <strong>Action Clause:</strong> is hugging his classmates.</div>
+                        </div>
+                    </div>
+
+                    <!-- Sentence 4 -->
+                    <div class="p-5 rounded-2xl bg-indigo-50/50 border-2 border-indigo-100 hover:border-indigo-400 transition cursor-pointer group" onclick="highlightSentence(4)">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold bg-indigo-600 text-white px-2.5 py-0.5 rounded-full">Example 4</span>
+                            <span class="text-xs text-indigo-600 font-semibold group-hover:underline">Click to detail</span>
+                        </div>
+                        <p class="text-slate-800 font-medium text-base sm:text-lg">
+                            <strong class="text-indigo-700">Mike</strong> is the boy <span class="bg-amber-300 text-indigo-950 px-1.5 py-0.5 rounded font-bold">who</span> is raising the trophy.
+                        </p>
+                        <div class="mt-3 text-xs sm:text-sm text-slate-600 bg-white p-3 rounded-xl border border-indigo-100 space-y-1">
+                            <div>• <strong>Antecedent (Person):</strong> <span class="text-indigo-600 font-bold">the boy (Mike)</span></div>
+                            <div>• <strong>"who" refers to:</strong> <span class="text-amber-700 font-bold">Mike</span></div>
+                            <div>• <strong>Action Clause:</strong> is raising the trophy.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action Banner -->
+                <div class="bg-amber-50 rounded-2xl p-5 border border-amber-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-3xl">🚀</span>
+                        <div>
+                            <h4 class="font-bold text-amber-900">Ready to test your knowledge?</h4>
+                            <p class="text-xs sm:text-sm text-amber-800">Try the 45 Graded Sentence Jumble Exercises now!</p>
+                        </div>
+                    </div>
+                    <button onclick="switchTab('quiz1')" class="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-2xl shadow-md transition whitespace-nowrap">
+                        Start Jumble Exercises ➡️
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- TAB 2: RELATIVE CLAUSES JUMBLED EXERCISES (45Qs) -->
+        <!-- ========================================== -->
+        <section id="tab-quiz1" class="tab-content hidden space-y-6">
+            <!-- Header & Level Tabs -->
+            <div class="bg-white rounded-3xl p-6 shadow-md border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider">Exercise Module 1</span>
+                    <h2 class="font-display font-bold text-2xl sm:text-3xl text-slate-800">Relative Clause Sentence Builder</h2>
+                    <p class="text-slate-500 text-xs sm:text-sm">Arrange word tiles in correct order. Total 45 Questions (15 per level).</p>
+                </div>
+
+                <!-- Level Selector Buttons -->
+                <div class="flex items-center bg-slate-100 p-1.5 rounded-2xl self-start md:self-auto">
+                    <button onclick="setQuiz1Level(1)" id="q1-lvl-1" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition bg-indigo-600 text-white shadow">Level 1 (Basic)</button>
+                    <button onclick="setQuiz1Level(2)" id="q1-lvl-2" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition">Level 2 (School)</button>
+                    <button onclick="setQuiz1Level(3)" id="q1-lvl-3" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition">Level 3 (Advanced)</button>
+                </div>
+            </div>
+
+            <!-- Quiz Game Box -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-slate-200 space-y-6 relative">
+                <!-- Progress Header -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <span id="q1-badge-level" class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full">Level 1</span>
+                        <span class="text-slate-400">•</span>
+                        <span id="q1-progress-text" class="text-sm font-bold text-slate-700">Question 1 of 15</span>
+                    </div>
+                    <div class="w-32 sm:w-48 bg-slate-100 rounded-full h-3 overflow-hidden border border-slate-200">
+                        <div id="q1-progress-bar" class="bg-indigo-600 h-full transition-all duration-300 w-0"></div>
+                    </div>
+                </div>
+
+                <!-- Sentence Target Area (Drop / Tap Zone) -->
+                <div class="space-y-2">
+                    <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wide">Your Sentence Assembly Box:</label>
+                    <div id="q1-answer-zone" class="min-h-[100px] p-4 bg-slate-50 border-2 border-dashed border-indigo-200 rounded-2xl flex flex-wrap gap-2.5 items-center transition-all">
+                        <span id="q1-placeholder" class="text-slate-400 text-sm italic">Tap word tiles below to build the sentence...</span>
+                    </div>
+                </div>
+
+                <!-- Word Tiles Pool Zone -->
+                <div class="space-y-2">
+                    <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wide">Available Word Tiles (Tap to add):</label>
+                    <div id="q1-tiles-pool" class="p-4 bg-indigo-50/50 rounded-2xl flex flex-wrap gap-2.5 min-h-[90px] border border-indigo-100 items-center">
+                        <!-- Tiles generated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Feedback & Explanation Banner -->
+                <div id="q1-feedback" class="hidden p-4 rounded-2xl text-sm sm:text-base font-medium flex items-start space-x-3">
+                    <span id="q1-feedback-icon" class="text-2xl"></span>
+                    <div id="q1-feedback-body"></div>
+                </div>
+
+                <!-- Action Controls -->
+                <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-100">
+                    <div class="flex items-center space-x-2">
+                        <button onclick="resetCurrentQ1()" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs sm:text-sm transition">
+                            🔄 Reset Tiles
+                        </button>
+                        <button onclick="showQ1Hint()" class="px-4 py-2.5 bg-amber-100 hover:bg-amber-200 text-amber-800 font-bold rounded-xl text-xs sm:text-sm transition">
+                            💡 Hint
+                        </button>
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        <button onclick="checkQ1Answer()" id="btn-q1-check" class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-sm shadow-md transition">
+                            Check Answer ✨
+                        </button>
+                        <button onclick="nextQ1Question()" id="btn-q1-next" class="hidden px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-sm shadow-md transition">
+                            Next Question ➡️
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- TAB 3: "WITH" VS "IN" PREPOSITION LESSON -->
+        <!-- ========================================== -->
+        <section id="tab-lesson2" class="tab-content hidden space-y-8">
+            <!-- Header Banner -->
+            <div class="bg-gradient-to-r from-emerald-600 to-teal-800 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+                <div class="max-w-2xl">
+                    <span class="inline-block bg-emerald-500/40 text-amber-300 text-xs sm:text-sm font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">HK Primary 5 Grammar Unit 2</span>
+                    <h2 class="font-display text-2xl sm:text-4xl font-bold mb-2">Describing People: "WITH" vs "IN"</h2>
+                    <p class="text-emerald-100 text-sm sm:text-base leading-relaxed">
+                        Learn when to use <span class="bg-amber-400 text-emerald-950 font-bold px-2 py-0.5 rounded">WITH</span> and <span class="bg-amber-400 text-emerald-950 font-bold px-2 py-0.5 rounded">IN</span> to describe someone's features, clothes, and accessories!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Rule Summary Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- WITH Rule Box -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border-2 border-emerald-200 space-y-4 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-emerald-500 text-white font-bold text-xs px-4 py-1.5 rounded-bl-2xl">Rule #1</div>
+                    <div class="flex items-center space-x-3">
+                        <span class="w-12 h-12 bg-emerald-100 text-emerald-700 font-display font-bold text-2xl rounded-2xl flex items-center justify-center">WITH</span>
+                        <div>
+                            <h3 class="font-display font-bold text-xl text-slate-800">Use "WITH" for...</h3>
+                            <p class="text-xs text-slate-500">Body Parts, Facial Features & Accessories</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 pt-2">
+                        <div class="bg-emerald-50 p-3.5 rounded-2xl border border-emerald-100">
+                            <span class="font-bold text-emerald-900 text-sm">👤 Body Parts & Features:</span>
+                            <ul class="text-xs sm:text-sm text-emerald-800 mt-1 space-y-1 list-disc list-inside">
+                                <li>a round face, a long face</li>
+                                <li>curly blonde hair, long straight hair</li>
+                                <li>big brown eyes, dimples, freckles</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-emerald-50 p-3.5 rounded-2xl border border-emerald-100">
+                            <span class="font-bold text-emerald-900 text-sm">👓 Accessories / Carried Items:</span>
+                            <ul class="text-xs sm:text-sm text-emerald-800 mt-1 space-y-1 list-disc list-inside">
+                                <li>glasses, sunglasses</li>
+                                <li>a bow tie</li>
+                                <li>an umbrella, a backpack</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 text-white p-4 rounded-2xl text-xs sm:text-sm">
+                        <p class="text-amber-300 font-semibold mb-1">💡 Pattern Example:</p>
+                        <p>• "Who's the boy <strong class="text-emerald-400 underline">with</strong> the long face?"</p>
+                        <p>• "Who's the girl <strong class="text-emerald-400 underline">with</strong> the glasses?"</p>
+                    </div>
+                </div>
+
+                <!-- IN Rule Box -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border-2 border-teal-200 space-y-4 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-teal-600 text-white font-bold text-xs px-4 py-1.5 rounded-bl-2xl">Rule #2</div>
+                    <div class="flex items-center space-x-3">
+                        <span class="w-12 h-12 bg-teal-100 text-teal-700 font-display font-bold text-2xl rounded-2xl flex items-center justify-center">IN</span>
+                        <div>
+                            <h3 class="font-display font-bold text-xl text-slate-800">Use "IN" for...</h3>
+                            <p class="text-xs text-slate-500">Clothing Items & Worn Garments</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 pt-2">
+                        <div class="bg-teal-50 p-3.5 rounded-2xl border border-teal-100">
+                            <span class="font-bold text-teal-900 text-sm">🧥 Clothing & Clothes Items:</span>
+                            <ul class="text-xs sm:text-sm text-teal-800 mt-1 space-y-1 list-disc list-inside">
+                                <li>a suit, a vest, a jacket, a raincoat</li>
+                                <li>gloves, mittens</li>
+                                <li>sandals, boots, shoes</li>
+                                <li>a red dress, a school uniform</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 text-white p-4 rounded-2xl text-xs sm:text-sm">
+                        <p class="text-amber-300 font-semibold mb-1">💡 Pattern Example:</p>
+                        <p>• "Who's the girl <strong class="text-teal-300 underline">in</strong> the vest?"</p>
+                        <p>• "Who's the man <strong class="text-teal-300 underline">in</strong> a dark suit?"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Categorization Mini Game -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-slate-200 space-y-6">
+                <div class="border-b border-slate-100 pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div>
+                        <h3 class="font-display font-bold text-xl sm:text-2xl text-slate-800 flex items-center gap-2">
+                            <span>🎮</span> Preposition Categorization Challenge
+                        </h3>
+                        <p class="text-slate-500 text-xs sm:text-sm">Tap each item to classify whether it takes <strong>WITH</strong> or <strong>IN</strong>!</p>
+                    </div>
+                    <button onclick="resetSortGame()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition">
+                        🔄 Reset Game
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- WITH Bucket -->
+                    <div id="bucket-with" class="bg-emerald-50 border-2 border-emerald-300 rounded-2xl p-5 min-h-[180px] space-y-3">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-emerald-900 flex items-center gap-2">
+                                <span>👤</span> Bucket 1: WITH (Body & Accessories)
+                            </h4>
+                            <span id="score-with" class="text-xs bg-emerald-200 text-emerald-800 font-bold px-2 py-0.5 rounded-full">0 items</span>
+                        </div>
+                        <div id="with-items-zone" class="flex flex-wrap gap-2 min-h-[100px]"></div>
+                    </div>
+
+                    <!-- IN Bucket -->
+                    <div id="bucket-in" class="bg-teal-50 border-2 border-teal-300 rounded-2xl p-5 min-h-[180px] space-y-3">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-teal-900 flex items-center gap-2">
+                                <span>🧥</span> Bucket 2: IN (Clothing Items)
+                            </h4>
+                            <span id="score-in" class="text-xs bg-teal-200 text-teal-800 font-bold px-2 py-0.5 rounded-full">0 items</span>
+                        </div>
+                        <div id="in-items-zone" class="flex flex-wrap gap-2 min-h-[100px]"></div>
+                    </div>
+                </div>
+
+                <!-- Unsorted Items Pool -->
+                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wide">Unsorted Items Pool:</span>
+                    <div id="unsorted-pool" class="flex flex-wrap gap-2 pt-1">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- TAB 4: PREPOSITION QUIZ EXERCISES (45Qs) -->
+        <!-- ========================================== -->
+        <section id="tab-quiz2" class="tab-content hidden space-y-6">
+            <!-- Header & Level Selector -->
+            <div class="bg-white rounded-3xl p-6 shadow-md border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Exercise Module 2</span>
+                    <h2 class="font-display font-bold text-2xl sm:text-3xl text-slate-800">"With" vs "In" Master Quiz</h2>
+                    <p class="text-slate-500 text-xs sm:text-sm">45 Graded Questions across 3 Levels (Item rule, Pattern Fill, Sentences).</p>
+                </div>
+
+                <div class="flex items-center bg-slate-100 p-1.5 rounded-2xl self-start md:self-auto">
+                    <button onclick="setQuiz2Level(1)" id="q2-lvl-1" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition bg-emerald-600 text-white shadow">Level 1 (Items)</button>
+                    <button onclick="setQuiz2Level(2)" id="q2-lvl-2" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition">Level 2 (Patterns)</button>
+                    <button onclick="setQuiz2Level(3)" id="q2-lvl-3" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition">Level 3 (Sentences)</button>
+                </div>
+            </div>
+
+            <!-- Quiz Box -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-slate-200 space-y-6">
+                <!-- Progress Bar -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <span id="q2-badge-level" class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full">Level 1</span>
+                        <span class="text-slate-400">•</span>
+                        <span id="q2-progress-text" class="text-sm font-bold text-slate-700">Question 1 of 15</span>
+                    </div>
+                    <div class="w-32 sm:w-48 bg-slate-100 rounded-full h-3 overflow-hidden border border-slate-200">
+                        <div id="q2-progress-bar" class="bg-emerald-600 h-full transition-all duration-300 w-0"></div>
+                    </div>
+                </div>
+
+                <!-- Question Prompt Card -->
+                <div class="bg-emerald-50/60 p-6 rounded-2xl border border-emerald-100 space-y-3">
+                    <span id="q2-question-type" class="text-xs font-bold uppercase text-emerald-700 tracking-wider">Select the correct preposition:</span>
+                    <h3 id="q2-question-stem" class="font-display font-bold text-xl sm:text-2xl text-slate-800">
+                        <!-- Stem text -->
+                    </h3>
+                </div>
+
+                <!-- Multiple Choice Options -->
+                <div id="q2-options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Option buttons populated dynamically -->
+                </div>
+
+                <!-- Feedback Banner -->
+                <div id="q2-feedback" class="hidden p-4 rounded-2xl text-sm sm:text-base font-medium flex items-start space-x-3">
+                    <span id="q2-feedback-icon" class="text-2xl"></span>
+                    <div id="q2-feedback-body"></div>
+                </div>
+
+                <!-- Footer Nav Controls -->
+                <div class="flex items-center justify-between pt-2 border-t border-slate-100">
+                    <button onclick="showQ2Hint()" class="px-4 py-2 bg-amber-100 hover:bg-amber-200 text-amber-800 font-bold rounded-xl text-xs sm:text-sm transition">
+                        💡 Hint
+                    </button>
+                    <button onclick="nextQ2Question()" id="btn-q2-next" class="hidden px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-sm shadow-md transition">
+                        Next Question ➡️
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- TAB 5: DASHBOARD & CERTIFICATE GENERATOR -->
+        <!-- ========================================== -->
+        <section id="tab-dashboard" class="tab-content hidden space-y-8">
+            <!-- Header -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-slate-200 space-y-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider">Student Profile</span>
+                        <h2 class="font-display font-bold text-2xl sm:text-3xl text-slate-800">Primary 5 Learning Progress</h2>
+                    </div>
+                    <button onclick="resetAllProgress()" class="px-4 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs rounded-xl transition border border-rose-200 self-start md:self-auto">
+                        ⚠️ Reset All Scores
+                    </button>
+                </div>
+
+                <!-- Stats Grid Cards -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <div class="p-4 rounded-2xl bg-indigo-50 border border-indigo-100 text-center">
+                        <span class="text-3xl">⭐</span>
+                        <p class="text-xs text-indigo-600 font-semibold uppercase mt-1">Total Stars</p>
+                        <p id="dash-stars" class="text-2xl sm:text-3xl font-display font-bold text-indigo-900">0</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-rose-50 border border-rose-100 text-center">
+                        <span class="text-3xl">🔥</span>
+                        <p class="text-xs text-rose-600 font-semibold uppercase mt-1">Streak</p>
+                        <p id="dash-streak" class="text-2xl sm:text-3xl font-display font-bold text-rose-900">0</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-100 text-center">
+                        <span class="text-3xl">🧩</span>
+                        <p class="text-xs text-emerald-600 font-semibold uppercase mt-1">Jumble Completed</p>
+                        <p id="dash-q1-completed" class="text-2xl sm:text-3xl font-display font-bold text-emerald-900">0 / 45</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-amber-50 border border-amber-100 text-center">
+                        <span class="text-3xl">🎯</span>
+                        <p class="text-xs text-amber-600 font-semibold uppercase mt-1">Quiz Completed</p>
+                        <p id="dash-q2-completed" class="text-2xl sm:text-3xl font-display font-bold text-amber-900">0 / 45</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate Generator Card -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-slate-200 space-y-6">
+                <div>
+                    <h3 class="font-display font-bold text-xl sm:text-2xl text-slate-800 flex items-center gap-2">
+                        <span>🎓</span> Primary 5 English Grammar Star Certificate
+                    </h3>
+                    <p class="text-slate-500 text-xs sm:text-sm">Enter student name to generate and print your official completion award!</p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <input type="text" id="student-name-input" placeholder="Enter Student's English Name (e.g. Alex Wong)" class="px-4 py-3 border-2 border-slate-200 rounded-2xl focus:border-indigo-600 focus:outline-none flex-grow text-sm sm:text-base">
+                    <button onclick="generateCertificate()" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-2xl shadow-md transition whitespace-nowrap">
+                        Generate Certificate 📜
+                    </button>
+                </div>
+
+                <!-- Printable Certificate Stage -->
+                <div id="certificate-display" class="hidden border-8 border-indigo-900 p-6 sm:p-10 rounded-3xl bg-amber-50/40 text-center space-y-4 relative overflow-hidden shadow-2xl">
+                    <div class="absolute -top-12 -left-12 w-32 h-32 bg-amber-300/30 rounded-full blur-xl"></div>
+                    <div class="absolute -bottom-12 -right-12 w-32 h-32 bg-indigo-300/30 rounded-full blur-xl"></div>
+
+                    <div class="text-indigo-900 font-display font-bold text-xs uppercase tracking-widest border-b-2 border-indigo-200 pb-2 max-w-xs mx-auto">Hong Kong Primary Education Award</div>
+                    
+                    <h2 class="font-display font-bold text-2xl sm:text-4xl text-indigo-900">Certificate of Achievement</h2>
+                    <p class="text-xs sm:text-sm text-slate-600">This is to certify that</p>
+                    
+                    <div id="cert-student-name" class="text-2xl sm:text-4xl font-display font-bold text-amber-600 underline decoration-amber-300 underline-offset-8">
+                        Alex Wong
+                    </div>
+
+                    <p class="text-xs sm:text-base text-slate-700 max-w-lg mx-auto leading-relaxed">
+                        has successfully mastered <strong>Primary 5 English Relative Clauses ("Who")</strong> and <strong>Preposition Descriptors ("With" vs "In")</strong> with outstanding performance!
+                    </p>
+
+                    <div class="flex items-center justify-around pt-6 border-t border-indigo-200 text-xs sm:text-sm">
+                        <div>
+                            <p class="font-bold text-slate-800" id="cert-date">October 2026</p>
+                            <p class="text-slate-400 text-xs">Date Completed</p>
+                        </div>
+                        <div class="w-16 h-16 bg-amber-400 rounded-full flex items-center justify-center font-display font-bold text-indigo-900 shadow-lg text-xs">
+                            P5 STAR
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-800">Grammar Quest</p>
+                            <p class="text-slate-400 text-xs">Primary 5 Panel</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 text-center text-xs mt-10">
+        <p>Primary 5 Hong Kong English Curriculum • Relative Clauses ("Who") & Prepositions ("With" / "In")</p>
+        <p class="mt-1 text-slate-500">Designed for HK Primary 5 Students & Teachers</p>
+    </footer>
+
+
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT LOGIC ENGINE -->
+    <!-- ========================================== -->
+    <script>
+        /* ==========================================
+           1. WEB AUDIO API SYNTHESIZER
+           ========================================== */
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        let audioCtx = null;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new AudioCtx();
+            }
+        }
+
+        function playSound(type) {
+            try {
+                initAudio();
+                if (!audioCtx) return;
+
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                const now = audioCtx.currentTime;
+
+                if (type === 'correct') {
+                    // Ascending Happy Chord
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now); // C5
+                    osc.frequency.setValueAtTime(659.25, now + 0.1); // E5
+                    osc.frequency.setValueAtTime(783.99, now + 0.2); // G5
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+                    osc.start(now);
+                    osc.stop(now + 0.4);
+                } else if (type === 'incorrect') {
+                    // Low Buzz
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(180, now);
+                    osc.frequency.setValueAtTime(140, now + 0.15);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                    osc.start(now);
+                    osc.stop(now + 0.3);
+                } else if (type === 'click') {
+                    // Soft Tap
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(400, now);
+                    gain.gain.setValueAtTime(0.1, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
+                    osc.start(now);
+                    osc.stop(now + 0.05);
+                } else if (type === 'fanfare') {
+                    // Victory Tune
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now); // C5
+                    osc.frequency.setValueAtTime(659.25, now + 0.15); // E5
+                    osc.frequency.setValueAtTime(783.99, now + 0.3); // G5
+                    osc.frequency.setValueAtTime(1046.50, now + 0.45); // C6
+                    gain.gain.setValueAtTime(0.3, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.8);
+                    osc.start(now);
+                    osc.stop(now + 0.8);
+                }
+            } catch (e) {
+                // Audio fallback silence
+            }
+        }
+
+
+        /* ==========================================
+           2. APP STATE & GLOBAL STORAGE
+           ========================================== */
+        let state = {
+            stars: 0,
+            streak: 0,
+            q1Level: 1,
+            q1Index: 0,
+            q1CompletedCount: 0,
+            q2Level: 1,
+            q2Index: 0,
+            q2CompletedCount: 0
+        };
+
+        function addStars(num) {
+            state.stars += num;
+            document.getElementById('user-stars').innerText = state.stars;
+            document.getElementById('dash-stars').innerText = state.stars;
+        }
+
+        function incStreak() {
+            state.streak += 1;
+            document.getElementById('user-streak').innerText = state.streak;
+            document.getElementById('dash-streak').innerText = state.streak;
+        }
+
+        function resetStreak() {
+            state.streak = 0;
+            document.getElementById('user-streak').innerText = 0;
+            document.getElementById('dash-streak').innerText = 0;
+        }
+
+
+        /* ==========================================
+           3. TAB NAVIGATION CONTROL
+           ========================================== */
+        function switchTab(tabId) {
+            playSound('click');
+            const tabs = ['lesson1', 'quiz1', 'lesson2', 'quiz2', 'dashboard'];
+            tabs.forEach(t => {
+                document.getElementById('tab-' + t).classList.add('hidden');
+                
+                const navBtn = document.getElementById('nav-' + t);
+                const mobBtn = document.getElementById('mobile-nav-' + t);
+
+                if (navBtn) {
+                    navBtn.className = "tab-btn px-3 py-2 rounded-xl text-xs lg:text-sm font-semibold text-indigo-100 hover:bg-indigo-600 transition flex items-center space-x-1";
+                }
+                if (mobBtn) {
+                    mobBtn.className = "mobile-tab px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap text-indigo-200";
+                }
+            });
+
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+
+            const activeNav = document.getElementById('nav-' + tabId);
+            const activeMob = document.getElementById('mobile-nav-' + tabId);
+            if (activeNav) {
+                activeNav.className = "tab-btn px-3 py-2 rounded-xl text-xs lg:text-sm font-semibold transition flex items-center space-x-1 bg-indigo-800 text-white shadow";
+            }
+            if (activeMob) {
+                activeMob.className = "mobile-tab px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-white text-indigo-900";
+            }
+        }
+
+
+        /* ==========================================
+           4. LESSON 1: ANIMATED SENTENCE JOINER DEMO
+           ========================================== */
+        let currentAnimStep = 1;
+        let animTimer = null;
+
+        const animSteps = [
+            {
+                step: 1,
+                title: "Step 1: Identify Two Sentences & Repeated Person",
+                explanation: "Sentence 1: 'Tina is a girl.' | Sentence 2: 'Tina is receiving a trophy for a drawing competition.' Both sentences talk about <strong>Tina</strong>!",
+                render: () => `
+                    <div class="space-y-3 font-display text-lg sm:text-2xl pop-in">
+                        <div class="bg-indigo-950 p-4 rounded-xl border border-indigo-700">
+                            Sentence 1: <span class="bg-amber-400 text-indigo-950 px-2 py-0.5 rounded font-bold">Tina</span> is a girl<span class="text-rose-400 font-bold">.</span>
+                        </div>
+                        <div class="bg-indigo-950 p-4 rounded-xl border border-indigo-700">
+                            Sentence 2: <span class="bg-amber-400 text-indigo-950 px-2 py-0.5 rounded font-bold">Tina</span> is receiving a trophy for a drawing competition.
+                        </div>
+                    </div>
+                `
+            },
+            {
+                step: 2,
+                title: "Step 2: Delete Full Stop from Sentence 1",
+                explanation: "Remove the full stop <span class='text-rose-500 font-bold'>.</span> at the end of Sentence 1 so the sentences can merge together.",
+                render: () => `
+                    <div class="space-y-3 font-display text-lg sm:text-2xl">
+                        <div class="bg-indigo-950 p-4 rounded-xl border-2 border-rose-500/80 relative pop-in">
+                            Tina is a girl <span class="inline-block px-1 bg-rose-600 text-white font-bold rounded animate-ping">.</span> <span class="text-xs text-rose-300 font-sans block mt-1">(Deleting full stop...)</span>
+                        </div>
+                        <div class="bg-indigo-950 p-4 rounded-xl border border-indigo-700 opacity-60">
+                            Tina is receiving a trophy for a drawing competition.
+                        </div>
+                    </div>
+                `
+            },
+            {
+                step: 3,
+                title: "Step 3: Delete Repeated Name 'Tina' in Sentence 2",
+                explanation: "Delete the second <strong>'Tina'</strong> to avoid repeating the person's name in the combined sentence.",
+                render: () => `
+                    <div class="space-y-3 font-display text-lg sm:text-2xl">
+                        <div class="bg-indigo-950 p-4 rounded-xl border border-indigo-700">
+                            Tina is a girl
+                        </div>
+                        <div class="bg-indigo-950 p-4 rounded-xl border-2 border-rose-500 relative pop-in">
+                            <span class="strike-animated text-rose-400 font-bold px-2">Tina</span> is receiving a trophy for a drawing competition.
+                            <span class="text-xs text-rose-300 font-sans block mt-1">(Deleting second Tina...)</span>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                step: 4,
+                title: "Step 4: Insert Relative Pronoun 'WHO'",
+                explanation: "Replace the deleted 'Tina' with the relative pronoun <span class='bg-amber-400 text-indigo-950 font-bold px-2 rounded'>who</span>.",
+                render: () => `
+                    <div class="space-y-3 font-display text-lg sm:text-2xl">
+                        <div class="bg-indigo-950 p-4 rounded-xl border border-indigo-700">
+                            Tina is a girl
+                        </div>
+                        <div class="bg-indigo-950 p-4 rounded-xl border-2 border-amber-400 pop-in">
+                            <span class="bg-amber-400 text-indigo-950 px-3 py-1 rounded-xl font-bold shadow-lg">who</span> is receiving a trophy for a drawing competition.
+                        </div>
+                    </div>
+                `
+            },
+            {
+                step: 5,
+                title: "Step 5: Merge Smoothly into One Sentence!",
+                explanation: "🎉 Perfect! 'Tina is a girl <strong>who</strong> is receiving a trophy for a drawing competition.' <br><span class='text-amber-300 font-bold'>Notice: 'WHO' refers back to 'a girl' (Tina)!</span>",
+                render: () => `
+                    <div class="p-6 bg-gradient-to-r from-indigo-950 to-purple-950 rounded-2xl border-2 border-amber-400 shadow-2xl pop-in text-lg sm:text-2xl font-display leading-relaxed">
+                        <span class="text-white">Tina is </span>
+                        <span class="text-amber-300 font-bold underline">a girl</span> 
+                        <span class="bg-amber-400 text-indigo-950 px-2.5 py-0.5 rounded-xl font-bold inline-block mx-1">who</span> 
+                        <span class="text-indigo-100">is receiving a trophy for a drawing competition.</span>
+                    </div>
+                `
+            }
+        ];
+
+        function renderAnimStep(stepNum) {
+            currentAnimStep = stepNum;
+            const data = animSteps[stepNum - 1];
+
+            document.getElementById('animation-stage').innerHTML = data.render();
+            document.getElementById('explanation-text').innerHTML = `<strong>${data.title}:</strong> ${data.explanation}`;
+
+            // Connector arrow overlay for step 5
+            const arrowBox = document.getElementById('connector-arrow-box');
+            if (stepNum === 5) {
+                arrowBox.classList.remove('hidden');
+            } else {
+                arrowBox.classList.add('hidden');
+            }
+
+            // Update step indicator dots
+            for (let i = 1; i <= 5; i++) {
+                const dot = document.getElementById(`step-dot-${i}`);
+                if (i === stepNum) {
+                    dot.className = "w-4 h-4 rounded-full bg-amber-400 ring-4 ring-indigo-500/50 transition-all";
+                } else if (i < stepNum) {
+                    dot.className = "w-3 h-3 rounded-full bg-indigo-500 transition-all";
+                } else {
+                    dot.className = "w-3 h-3 rounded-full bg-slate-700 transition-all";
+                }
+            }
+
+            // Disable buttons if at boundary
+            document.getElementById('btn-prev-anim').disabled = (stepNum === 1);
+            document.getElementById('btn-next-anim').disabled = (stepNum === 5);
+        }
+
+        function nextAnimStep() {
+            playSound('click');
+            if (currentAnimStep < 5) {
+                renderAnimStep(currentAnimStep + 1);
+            }
+        }
+
+        function prevAnimStep() {
+            playSound('click');
+            if (currentAnimStep > 1) {
+                renderAnimStep(currentAnimStep - 1);
+            }
+        }
+
+        function resetAnim() {
+            playSound('click');
+            if (animTimer) clearInterval(animTimer);
+            document.getElementById('btn-autoplay-anim').innerText = "▶️ Auto Play";
+            renderAnimStep(1);
+        }
+
+        function autoPlayAnim() {
+            playSound('click');
+            if (animTimer) {
+                clearInterval(animTimer);
+                animTimer = null;
+                document.getElementById('btn-autoplay-anim').innerText = "▶️ Auto Play";
+                return;
+            }
+
+            document.getElementById('btn-autoplay-anim').innerText = "⏸️ Pause";
+            if (currentAnimStep >= 5) currentAnimStep = 0;
+
+            animTimer = setInterval(() => {
+                if (currentAnimStep < 5) {
+                    renderAnimStep(currentAnimStep + 1);
+                } else {
+                    clearInterval(animTimer);
+                    animTimer = null;
+                    document.getElementById('btn-autoplay-anim').innerText = "▶️ Auto Play";
+                }
+            }, 2500);
+        }
+
+        function highlightSentence(num) {
+            playSound('click');
+            const titles = [
+                "Pam is the girl who is waving at the audience.",
+                "Principal Lam is the man who is giving a speech.",
+                "Tim is the boy who is hugging his classmates.",
+                "Mike is the boy who is raising the trophy."
+            ];
+            const refersTo = ["Pam (the girl)", "Principal Lam (the man)", "Tim (the boy)", "Mike (the boy)"];
+            alert(`Sentence ${num}:\n"${titles[num-1]}"\n\nIn this sentence, "WHO" refers to ${refersTo[num-1]}.`);
+        }
+
+
+        /* ==========================================
+           5. DATASET: 45 JUMBLED SENTENCE QUESTIONS
+           ========================================== */
+        const q1Dataset = {
+            level1: [
+                { parts: ["Pam", "is", "the girl", "who", "is waving", "at the audience."], solution: "Pam is the girl who is waving at the audience.", hint: "Start with the person's name 'Pam'..." },
+                { parts: ["Principal Lam", "is", "the man", "who", "is giving", "a speech."], solution: "Principal Lam is the man who is giving a speech.", hint: "Start with 'Principal Lam'..." },
+                { parts: ["Tim", "is", "the boy", "who", "is hugging", "his classmates."], solution: "Tim is the boy who is hugging his classmates.", hint: "Start with 'Tim'..." },
+                { parts: ["Mike", "is", "the boy", "who", "is raising", "the trophy."], solution: "Mike is the boy who is raising the trophy.", hint: "Start with 'Mike'..." },
+                { parts: ["Tina", "is", "the girl", "who", "is receiving", "a trophy."], solution: "Tina is the girl who is receiving a trophy.", hint: "Start with 'Tina'..." },
+                { parts: ["Amy", "is", "the girl", "who", "is smiling", "at the teacher."], solution: "Amy is the girl who is smiling at the teacher.", hint: "Start with 'Amy'..." },
+                { parts: ["Ben", "is", "the boy", "who", "is playing", "the piano."], solution: "Ben is the boy who is playing the piano.", hint: "Start with 'Ben'..." },
+                { parts: ["Mrs. Wong", "is", "the teacher", "who", "is holding", "the books."], solution: "Mrs. Wong is the teacher who is holding the books.", hint: "Start with 'Mrs. Wong'..." },
+                { parts: ["Leo", "is", "the student", "who", "is running", "in the playground."], solution: "Leo is the student who is running in the playground.", hint: "Start with 'Leo'..." },
+                { parts: ["Mary", "is", "the girl", "who", "is wearing", "a yellow ribbon."], solution: "Mary is the girl who is wearing a yellow ribbon.", hint: "Start with 'Mary'..." },
+                { parts: ["David", "is", "the boy", "who", "is singing", "on the stage."], solution: "David is the boy who is singing on the stage.", hint: "Start with 'David'..." },
+                { parts: ["Kelly", "is", "the girl", "who", "is drawing", "a poster."], solution: "Kelly is the girl who is drawing a poster.", hint: "Start with 'Kelly'..." },
+                { parts: ["John", "is", "the boy", "who", "is reading", "a storybook."], solution: "John is the boy who is reading a storybook.", hint: "Start with 'John'..." },
+                { parts: ["Susan", "is", "the girl", "who", "is answering", "the question."], solution: "Susan is the girl who is answering the question.", hint: "Start with 'Susan'..." },
+                { parts: ["Peter", "is", "the boy", "who", "is washing", "his hands."], solution: "Peter is the boy who is washing his hands.", hint: "Start with 'Peter'..." }
+            ],
+            level2: [
+                { parts: ["The girl", "who", "won", "the swimming competition", "is", "May."], solution: "The girl who won the swimming competition is May.", hint: "Start with 'The girl who...' " },
+                { parts: ["The boy", "who", "is playing", "basketball", "is", "our class monitor."], solution: "The boy who is playing basketball is our class monitor.", hint: "Start with 'The boy who...' " },
+                { parts: ["Miss Lee", "is", "the teacher", "who", "teaches", "us English."], solution: "Miss Lee is the teacher who teaches us English.", hint: "Start with 'Miss Lee...' " },
+                { parts: ["The student", "who", "is holding", "the flag", "is", "Tom."], solution: "The student who is holding the flag is Tom.", hint: "Start with 'The student who...' " },
+                { parts: ["Jenny", "is", "the girl", "who", "received", "the best artwork award."], solution: "Jenny is the girl who received the best artwork award.", hint: "Start with 'Jenny is...' " },
+                { parts: ["The prefect", "who", "is standing", "at the door", "is", "Eric."], solution: "The prefect who is standing at the door is Eric.", hint: "Start with 'The prefect who...' " },
+                { parts: ["The boy", "who", "scored", "the highest mark", "is", "Ken."], solution: "The boy who scored the highest mark is Ken.", hint: "Start with 'The boy who...' " },
+                { parts: ["Paul", "is", "the sprinter", "who", "won", "the gold medal."], solution: "Paul is the sprinter who won the gold medal.", hint: "Start with 'Paul is...' " },
+                { parts: ["The girl", "who", "plays", "the violin", "so well", "is", "Sarah."], solution: "The girl who plays the violin so well is Sarah.", hint: "Start with 'The girl who...' " },
+                { parts: ["Mr. Chan", "is", "the principal", "who", "leads", "our school."], solution: "Mr. Chan is the principal who leads our school.", hint: "Start with 'Mr. Chan is...' " },
+                { parts: ["The choir leader", "who", "is conducting", "the song", "is", "Grace."], solution: "The choir leader who is conducting the song is Grace.", hint: "Start with 'The choir leader...' " },
+                { parts: ["Sam", "is", "the goalkeeper", "who", "saved", "the goal."], solution: "Sam is the goalkeeper who saved the goal.", hint: "Start with 'Sam is...' " },
+                { parts: ["The librarian", "who", "helps", "us borrow books", "is", "Mrs. Ho."], solution: "The librarian who helps us borrow books is Mrs. Ho.", hint: "Start with 'The librarian...' " },
+                { parts: ["The girl", "who", "is performing", "magic tricks", "is", "Chloe."], solution: "The girl who is performing magic tricks is Chloe.", hint: "Start with 'The girl who...' " },
+                { parts: ["Jack", "is", "the boy", "who", "joined", "the science quiz."], solution: "Jack is the boy who joined the science quiz.", hint: "Start with 'Jack is...' " }
+            ],
+            level3: [
+                { parts: ["The hard-working student", "who", "completed", "the project early", "received", "a special award."], solution: "The hard-working student who completed the project early received a special award.", hint: "Start with 'The hard-working student who...' " },
+                { parts: ["Do you know", "the energetic boy", "who", "is dancing", "enthusiastically", "on the stage?"], solution: "Do you know the energetic boy who is dancing enthusiastically on the stage?", hint: "Start with 'Do you know...' " },
+                { parts: ["The polite girl", "who", "greeted", "all the guests", "at the entrance", "is", "our head prefect."], solution: "The polite girl who greeted all the guests at the entrance is our head prefect.", hint: "Start with 'The polite girl...' " },
+                { parts: ["The athlete", "who", "broke", "the school record", "during sports day", "was", "cheered by everyone."], solution: "The athlete who broke the school record during sports day was cheered by everyone.", hint: "Start with 'The athlete...' " },
+                { parts: ["I met", "the talented artist", "who", "painted", "this beautiful mural", "in our corridor."], solution: "I met the talented artist who painted this beautiful mural in our corridor.", hint: "Start with 'I met...' " },
+                { parts: ["The student", "who", "donated", "the most books", "to the library", "received", "a certificate."], solution: "The student who donated the most books to the library received a certificate.", hint: "Start with 'The student...' " },
+                { parts: ["Who is", "the tall boy", "who", "is helping", "the teacher", "carry the heavy boxes?"], solution: "Who is the tall boy who is helping the teacher carry the heavy boxes?", hint: "Start with 'Who is...' " },
+                { parts: ["The girl", "who", "spoke", "so confidently", "in the speech contest", "won", "first place."], solution: "The girl who spoke so confidently in the speech contest won first place.", hint: "Start with 'The girl who...' " },
+                { parts: ["Our classmate", "who", "rescued", "the injured kitten", "in the park", "is", "very kind."], solution: "Our classmate who rescued the injured kitten in the park is very kind.", hint: "Start with 'Our classmate...' " },
+                { parts: ["The doctor", "who", "visited", "our school", "yesterday", "gave", "a helpful health talk."], solution: "The doctor who visited our school yesterday gave a helpful health talk.", hint: "Start with 'The doctor...' " },
+                { parts: ["The student", "who", "represented", "Hong Kong", "in the math olympiad", "scored", "full marks."], solution: "The student who represented Hong Kong in the math olympiad scored full marks.", hint: "Start with 'The student...' " },
+                { parts: ["She is", "the friendly girl", "who", "always helps", "her classmates", "with their homework."], solution: "She is the friendly girl who always helps her classmates with their homework.", hint: "Start with 'She is...' " },
+                { parts: ["The boy", "who", "designed", "the winning logo", "for our school festival", "is", "in P5B."], solution: "The boy who designed the winning logo for our school festival is in P5B.", hint: "Start with 'The boy...' " },
+                { parts: ["Can you find", "the girl", "who", "is wearing", "a bright red cap", "in the photograph?"], solution: "Can you find the girl who is wearing a bright red cap in the photograph?", hint: "Start with 'Can you find...' " },
+                { parts: ["The musician", "who", "played", "the cello", "at the ceremony", "impressed", "all the parents."], solution: "The musician who played the cello at the ceremony impressed all the parents.", hint: "Start with 'The musician...' " }
+            ]
+        };
+
+        let currentQ1SelectedParts = [];
+
+        function setQuiz1Level(lvl) {
+            playSound('click');
+            state.q1Level = lvl;
+            state.q1Index = 0;
+
+            for (let i = 1; i <= 3; i++) {
+                const btn = document.getElementById(`q1-lvl-${i}`);
+                if (i === lvl) {
+                    btn.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition bg-indigo-600 text-white shadow";
+                } else {
+                    btn.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition";
+                }
+            }
+            renderQ1Question();
+        }
+
+        function getCurrentQ1List() {
+            if (state.q1Level === 1) return q1Dataset.level1;
+            if (state.q1Level === 2) return q1Dataset.level2;
+            return q1Dataset.level3;
+        }
+
+        function renderQ1Question() {
+            const list = getCurrentQ1List();
+            const currentData = list[state.q1Index];
+
+            document.getElementById('q1-badge-level').innerText = `Level ${state.q1Level}`;
+            document.getElementById('q1-progress-text').innerText = `Question ${state.q1Index + 1} of ${list.length}`;
+            document.getElementById('q1-progress-bar').style.width = `${((state.q1Index + 1) / list.length) * 100}%`;
+
+            // Clear feedback box & controls
+            document.getElementById('q1-feedback').classList.add('hidden');
+            document.getElementById('btn-q1-check').classList.remove('hidden');
+            document.getElementById('btn-q1-next').classList.add('hidden');
+
+            currentQ1SelectedParts = [];
+            renderQ1Assembly();
+
+            // Shuffle pool tiles
+            const poolTiles = [...currentData.parts];
+            poolTiles.sort(() => Math.random() - 0.5);
+
+            const poolContainer = document.getElementById('q1-tiles-pool');
+            poolContainer.innerHTML = '';
+            poolTiles.forEach((pText, idx) => {
+                const tile = document.createElement('button');
+                tile.className = "px-3.5 py-2 bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-950 font-semibold text-xs sm:text-sm rounded-xl shadow-sm transition tile-shadow cursor-pointer";
+                tile.innerText = pText;
+                tile.onclick = () => selectQ1Tile(tile, pText);
+                poolContainer.appendChild(tile);
+            });
+        }
+
+        function selectQ1Tile(btnElement, text) {
+            playSound('click');
+            btnElement.classList.add('opacity-30', 'pointer-events-none');
+            currentQ1SelectedParts.push({ element: btnElement, text: text });
+            renderQ1Assembly();
+        }
+
+        function deselectQ1Tile(index) {
+            playSound('click');
+            const item = currentQ1SelectedParts[index];
+            item.element.classList.remove('opacity-30', 'pointer-events-none');
+            currentQ1SelectedParts.splice(index, 1);
+            renderQ1Assembly();
+        }
+
+        function renderQ1Assembly() {
+            const zone = document.getElementById('q1-answer-zone');
+            zone.innerHTML = '';
+
+            if (currentQ1SelectedParts.length === 0) {
+                zone.innerHTML = `<span id="q1-placeholder" class="text-slate-400 text-sm italic">Tap word tiles below to build the sentence...</span>`;
+                return;
+            }
+
+            currentQ1SelectedParts.forEach((item, idx) => {
+                const tile = document.createElement('button');
+                tile.className = "px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs sm:text-sm rounded-xl shadow transition flex items-center space-x-1 cursor-pointer";
+                tile.innerHTML = `<span>${item.text}</span> <span class="text-indigo-200 text-xs font-bold">×</span>`;
+                tile.onclick = () => deselectQ1Tile(idx);
+                zone.appendChild(tile);
+            });
+        }
+
+        function resetCurrentQ1() {
+            playSound('click');
+            currentQ1SelectedParts.forEach(item => {
+                item.element.classList.remove('opacity-30', 'pointer-events-none');
+            });
+            currentQ1SelectedParts = [];
+            renderQ1Assembly();
+            document.getElementById('q1-feedback').classList.add('hidden');
+        }
+
+        function showQ1Hint() {
+            playSound('click');
+            const list = getCurrentQ1List();
+            const data = list[state.q1Index];
+            alert(`💡 Hint for Question ${state.q1Index + 1}:\n${data.hint}`);
+        }
+
+        function checkQ1Answer() {
+            const list = getCurrentQ1List();
+            const data = list[state.q1Index];
+
+            const userText = currentQ1SelectedParts.map(x => x.text).join(' ').trim();
+
+            const feedback = document.getElementById('q1-feedback');
+            const feedbackIcon = document.getElementById('q1-feedback-icon');
+            const feedbackBody = document.getElementById('q1-feedback-body');
+
+            feedback.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-900', 'border-emerald-300', 'bg-rose-50', 'text-rose-900', 'border-rose-300');
+
+            if (userText === data.solution) {
+                playSound('correct');
+                addStars(10);
+                incStreak();
+
+                feedback.classList.add('bg-emerald-50', 'text-emerald-900', 'border', 'border-emerald-300');
+                feedbackIcon.innerText = "🎉";
+                feedbackBody.innerHTML = `<strong>Excellent! Correct Sentence:</strong><br>"${data.solution}"`;
+
+                document.getElementById('btn-q1-check').classList.add('hidden');
+                document.getElementById('btn-q1-next').classList.remove('hidden');
+
+                state.q1CompletedCount = Math.min(45, state.q1CompletedCount + 1);
+                document.getElementById('dash-q1-completed').innerText = `${state.q1CompletedCount} / 45`;
+            } else {
+                playSound('incorrect');
+                resetStreak();
+
+                feedback.classList.add('bg-rose-50', 'text-rose-900', 'border', 'border-rose-300');
+                feedbackIcon.innerText = "❌";
+                feedbackBody.innerHTML = `<strong>Not quite right!</strong><br>Keep trying or reset tiles to rearrange!`;
+            }
+        }
+
+        function nextQ1Question() {
+            playSound('click');
+            const list = getCurrentQ1List();
+
+            if (state.q1Index < list.length - 1) {
+                state.q1Index++;
+                renderQ1Question();
+            } else {
+                playSound('fanfare');
+                alert(`🎊 Level ${state.q1Level} Completed! Great job!`);
+                if (state.q1Level < 3) {
+                    setQuiz1Level(state.q1Level + 1);
+                } else {
+                    switchTab('lesson2');
+                }
+            }
+        }
+
+
+        /* ==========================================
+           6. LESSON 2: PREPOSITION SORTING GAME
+           ========================================== */
+        const sortItems = [
+            { text: "a round face", type: "with" },
+            { text: "a suit", type: "in" },
+            { text: "sunglasses", type: "with" },
+            { text: "gloves", type: "in" },
+            { text: "curly blonde hair", type: "with" },
+            { text: "a vest", type: "in" },
+            { text: "a bow tie", type: "with" },
+            { text: "sandals", type: "in" },
+            { text: "glasses", type: "with" },
+            { text: "a long face", type: "with" },
+            { text: "long straight hair", type: "with" },
+            { text: "mittens", type: "in" }
+        ];
+
+        let withBucketList = [];
+        let inBucketList = [];
+        let unsortedList = [];
+
+        function resetSortGame() {
+            playSound('click');
+            withBucketList = [];
+            inBucketList = [];
+            unsortedList = [...sortItems].sort(() => Math.random() - 0.5);
+            renderSortGame();
+        }
+
+        function renderSortGame() {
+            const pool = document.getElementById('unsorted-pool');
+            const withZone = document.getElementById('with-items-zone');
+            const inZone = document.getElementById('in-items-zone');
+
+            pool.innerHTML = '';
+            withZone.innerHTML = '';
+            inZone.innerHTML = '';
+
+            document.getElementById('score-with').innerText = `${withBucketList.length} items`;
+            document.getElementById('score-in').innerText = `${inBucketList.length} items`;
+
+            unsortedList.forEach((item, idx) => {
+                const btn = document.createElement('div');
+                btn.className = "px-3 py-1.5 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm font-semibold flex items-center space-x-2 shadow-sm";
+                btn.innerHTML = `
+                    <span>${item.text}</span>
+                    <button onclick="sortItemTo('${item.type}', ${idx}, 'with')" class="text-xs font-bold text-emerald-700 bg-emerald-100 hover:bg-emerald-200 px-2 py-0.5 rounded">WITH</button>
+                    <button onclick="sortItemTo('${item.type}', ${idx}, 'in')" class="text-xs font-bold text-teal-700 bg-teal-100 hover:bg-teal-200 px-2 py-0.5 rounded">IN</button>
+                `;
+                pool.appendChild(btn);
+            });
+
+            withBucketList.forEach(item => {
+                const tag = document.createElement('span');
+                tag.className = "px-3 py-1 bg-emerald-600 text-white rounded-xl text-xs font-bold shadow pop-in";
+                tag.innerText = `✓ ${item.text}`;
+                withZone.appendChild(tag);
+            });
+
+            inBucketList.forEach(item => {
+                const tag = document.createElement('span');
+                tag.className = "px-3 py-1 bg-teal-600 text-white rounded-xl text-xs font-bold shadow pop-in";
+                tag.innerText = `✓ ${item.text}`;
+                inZone.appendChild(tag);
+            });
+        }
+
+        function sortItemTo(correctType, index, targetType) {
+            const item = unsortedList[index];
+
+            if (correctType === targetType) {
+                playSound('correct');
+                addStars(5);
+                unsortedList.splice(index, 1);
+                if (targetType === 'with') withBucketList.push(item);
+                else inBucketList.push(item);
+                renderSortGame();
+
+                if (unsortedList.length === 0) {
+                    playSound('fanfare');
+                    alert("🎉 Amazing! You sorted all features and clothing items correctly!");
+                }
+            } else {
+                playSound('incorrect');
+                alert(`❌ Oops! Remember: WITH is for body parts/accessories; IN is for clothing items.`);
+            }
+        }
+
+
+        /* ==========================================
+           7. DATASET: 45 PREPOSITION "WITH" VS "IN" QUESTIONS
+           ========================================== */
+        const q2Dataset = {
+            level1: [
+                { stem: "a round face", answer: "with", explanation: "Rule: Body feature / facial part takes WITH.", hint: "Is a round face a body part or clothing?" },
+                { stem: "a suit", answer: "in", explanation: "Rule: Worn clothing item takes IN.", hint: "Is a suit something you wear as clothing?" },
+                { stem: "sunglasses", answer: "with", explanation: "Rule: Accessories take WITH.", hint: "Are sunglasses an accessory or clothing?" },
+                { stem: "gloves", answer: "in", explanation: "Rule: Worn clothes/garments take IN.", hint: "Gloves are worn on hands as clothing." },
+                { stem: "curly blonde hair", answer: "with", explanation: "Rule: Hair & body features take WITH.", hint: "Hair is a body feature." },
+                { stem: "a vest", answer: "in", explanation: "Rule: Vest is a clothing item -> IN.", hint: "A vest is clothing." },
+                { stem: "a bow tie", answer: "with", explanation: "Rule: Bow tie is an accessory -> WITH.", hint: "A bow tie is an accessory." },
+                { stem: "sandals", answer: "in", explanation: "Rule: Footwear / clothing takes IN.", hint: "Sandals are footwear." },
+                { stem: "glasses", answer: "with", explanation: "Rule: Eyeglasses are an accessory -> WITH.", hint: "Glasses are accessories." },
+                { stem: "a long face", answer: "with", explanation: "Rule: Face shape / body part takes WITH.", hint: "A long face is a facial feature." },
+                { stem: "long straight hair", answer: "with", explanation: "Rule: Hair style takes WITH.", hint: "Hair is a body feature." },
+                { stem: "mittens", answer: "in", explanation: "Rule: Mittens are warm clothing -> IN.", hint: "Mittens are clothing." },
+                { stem: "a red dress", answer: "in", explanation: "Rule: A dress is clothing -> IN.", hint: "A dress is clothing." },
+                { stem: "big brown eyes", answer: "with", explanation: "Rule: Eye color / facial feature takes WITH.", hint: "Eyes are body parts." },
+                { stem: "a raincoat", answer: "in", explanation: "Rule: Raincoat is clothing -> IN.", hint: "A raincoat is clothing." }
+            ],
+            level2: [
+                { stem: "Who's the boy _____ the long face?", answer: "with", explanation: "'long face' is a body part -> WITH.", hint: "Body feature pattern." },
+                { stem: "Who's the girl _____ the vest?", answer: "in", explanation: "'the vest' is a clothing item -> IN.", hint: "Clothing pattern." },
+                { stem: "Who's the boy _____ the glasses?", answer: "with", explanation: "'the glasses' is an accessory -> WITH.", hint: "Accessory pattern." },
+                { stem: "Who's the man _____ a dark suit?", answer: "in", explanation: "'a dark suit' is clothing -> IN.", hint: "Clothing item." },
+                { stem: "Who's the woman _____ curly blonde hair?", answer: "with", explanation: "'curly blonde hair' is a feature -> WITH.", hint: "Hair feature." },
+                { stem: "Who's the child _____ yellow mittens?", answer: "in", explanation: "'yellow mittens' are clothing -> IN.", hint: "Hand garment." },
+                { stem: "Who's the gentleman _____ a bow tie?", answer: "with", explanation: "'a bow tie' is an accessory -> WITH.", hint: "Accessory." },
+                { stem: "Who's the girl _____ warm gloves?", answer: "in", explanation: "'warm gloves' are clothing -> IN.", hint: "Clothing." },
+                { stem: "Who's the boy _____ a round face?", answer: "with", explanation: "'a round face' is a facial feature -> WITH.", hint: "Facial shape." },
+                { stem: "Who's the tourist _____ cool sunglasses?", answer: "with", explanation: "'cool sunglasses' are an accessory -> WITH.", hint: "Accessory." },
+                { stem: "Who's the swimmer _____ blue sandals?", answer: "in", explanation: "'blue sandals' are footwear -> IN.", hint: "Footwear." },
+                { stem: "Who's the girl _____ long straight hair?", answer: "with", explanation: "'long straight hair' is a feature -> WITH.", hint: "Hair feature." },
+                { stem: "Who's the teacher _____ a white coat?", answer: "in", explanation: "'a white coat' is clothing -> IN.", hint: "Clothing item." },
+                { stem: "Who's the lady _____ dimples and a sweet smile?", answer: "with", explanation: "'dimples' are facial features -> WITH.", hint: "Facial feature." },
+                { stem: "Who's the student _____ a green jacket?", answer: "in", explanation: "'a green jacket' is clothing -> IN.", hint: "Clothing." }
+            ],
+            level3: [
+                { stem: "Look at the boy _____ glasses who is reading a book.", answer: "with", explanation: "'glasses' is an accessory -> WITH.", hint: "Glasses -> accessory." },
+                { stem: "The girl _____ the yellow vest who won the race is Amy.", answer: "in", explanation: "'yellow vest' is clothing -> IN.", hint: "Vest -> clothing." },
+                { stem: "Do you know the teacher _____ curly blonde hair who is speaking?", answer: "with", explanation: "'curly blonde hair' is a body feature -> WITH.", hint: "Hair -> body feature." },
+                { stem: "The gentleman _____ a neat suit who gave the speech is Mr. Lee.", answer: "in", explanation: "'a neat suit' is clothing -> IN.", hint: "Suit -> clothing." },
+                { stem: "Find the boy _____ a long face who is playing chess.", answer: "with", explanation: "'a long face' is a facial feature -> WITH.", hint: "Long face -> facial feature." },
+                { stem: "The girl _____ red mittens who is waving at us is my sister.", answer: "in", explanation: "'red mittens' are clothing -> IN.", hint: "Mittens -> clothing." },
+                { stem: "I talked to the man _____ dark sunglasses who stood by the door.", answer: "with", explanation: "'dark sunglasses' are an accessory -> WITH.", hint: "Sunglasses -> accessory." },
+                { stem: "The child _____ comfortable sandals who is jumping is Tim.", answer: "in", explanation: "'sandals' are footwear/clothing -> IN.", hint: "Sandals -> footwear." },
+                { stem: "Who is the lady _____ long straight hair who joined the choir?", answer: "with", explanation: "'long straight hair' is a hair feature -> WITH.", hint: "Hair -> feature." },
+                { stem: "The host _____ a fancy bow tie who introduced the guests was polite.", answer: "with", explanation: "'a bow tie' is an accessory -> WITH.", hint: "Bow tie -> accessory." },
+                { stem: "The boy _____ warm wool gloves who built the snowman smiled.", answer: "in", explanation: "'wool gloves' are clothing -> IN.", hint: "Gloves -> clothing." },
+                { stem: "The girl _____ a round face who won the drawing prize is Tina.", answer: "with", explanation: "'a round face' is a body feature -> WITH.", hint: "Round face -> feature." },
+                { stem: "The athlete _____ a sports vest who broke the record is Peter.", answer: "in", explanation: "'a sports vest' is clothing -> IN.", hint: "Sports vest -> clothing." },
+                { stem: "Who's the boy _____ freckles on his nose who is waving?", answer: "with", explanation: "'freckles' are a facial feature -> WITH.", hint: "Freckles -> body feature." },
+                { stem: "The student _____ a clean school uniform who received the trophy is Ken.", answer: "in", explanation: "'a school uniform' is clothing -> IN.", hint: "Uniform -> clothing." }
+            ]
+        };
+
+        function setQuiz2Level(lvl) {
+            playSound('click');
+            state.q2Level = lvl;
+            state.q2Index = 0;
+
+            for (let i = 1; i <= 3; i++) {
+                const btn = document.getElementById(`q2-lvl-${i}`);
+                if (i === lvl) {
+                    btn.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition bg-emerald-600 text-white shadow";
+                } else {
+                    btn.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition";
+                }
+            }
+            renderQ2Question();
+        }
+
+        function getCurrentQ2List() {
+            if (state.q2Level === 1) return q2Dataset.level1;
+            if (state.q2Level === 2) return q2Dataset.level2;
+            return q2Dataset.level3;
+        }
+
+        function renderQ2Question() {
+            const list = getCurrentQ2List();
+            const currentData = list[state.q2Index];
+
+            document.getElementById('q2-badge-level').innerText = `Level ${state.q2Level}`;
+            document.getElementById('q2-progress-text').innerText = `Question ${state.q2Index + 1} of ${list.length}`;
+            document.getElementById('q2-progress-bar').style.width = `${((state.q2Index + 1) / list.length) * 100}%`;
+
+            const typeLabel = (state.q2Level === 1) ? "Identify Preposition Rule:" : (state.q2Level === 2) ? "Complete Pattern Question:" : "Sentence Combination:";
+            document.getElementById('q2-question-type').innerText = typeLabel;
+
+            document.getElementById('q2-question-stem').innerHTML = currentData.stem;
+
+            document.getElementById('q2-feedback').classList.add('hidden');
+            document.getElementById('btn-q2-next').classList.add('hidden');
+
+            const container = document.getElementById('q2-options-container');
+            container.innerHTML = '';
+
+            const options = [
+                { label: "WITH", sub: "Body Parts & Accessories", val: "with" },
+                { label: "IN", sub: "Clothing & Garments", val: "in" }
+            ];
+
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = "p-5 bg-white hover:bg-emerald-50 border-2 border-emerald-200 hover:border-emerald-500 rounded-2xl text-left transition shadow-sm group flex items-center justify-between cursor-pointer";
+                btn.innerHTML = `
+                    <div>
+                        <div class="font-display font-bold text-2xl text-emerald-950 group-hover:text-emerald-700">${opt.label}</div>
+                        <div class="text-xs text-slate-500">${opt.sub}</div>
+                    </div>
+                    <span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition">➔</span>
+                `;
+                btn.onclick = () => selectQ2Option(opt.val, btn);
+                container.appendChild(btn);
+            });
+        }
+
+        function selectQ2Option(userVal, clickedBtn) {
+            const list = getCurrentQ2List();
+            const data = list[state.q2Index];
+
+            const feedback = document.getElementById('q2-feedback');
+            const feedbackIcon = document.getElementById('q2-feedback-icon');
+            const feedbackBody = document.getElementById('q2-feedback-body');
+
+            feedback.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-900', 'border-emerald-300', 'bg-rose-50', 'text-rose-900', 'border-rose-300');
+
+            if (userVal === data.answer) {
+                playSound('correct');
+                addStars(10);
+                incStreak();
+
+                feedback.classList.add('bg-emerald-50', 'text-emerald-900', 'border', 'border-emerald-300');
+                feedbackIcon.innerText = "🎉";
+                feedbackBody.innerHTML = `<strong>Correct!</strong> ${data.explanation}`;
+
+                document.getElementById('btn-q2-next').classList.remove('hidden');
+
+                state.q2CompletedCount = Math.min(45, state.q2CompletedCount + 1);
+                document.getElementById('dash-q2-completed').innerText = `${state.q2CompletedCount} / 45`;
+            } else {
+                playSound('incorrect');
+                resetStreak();
+
+                feedback.classList.add('bg-rose-50', 'text-rose-900', 'border', 'border-rose-300');
+                feedbackIcon.innerText = "❌";
+                feedbackBody.innerHTML = `<strong>Try again!</strong> ${data.explanation}`;
+            }
+        }
+
+        function showQ2Hint() {
+            playSound('click');
+            const list = getCurrentQ2List();
+            const data = list[state.q2Index];
+            alert(`💡 Hint:\n${data.hint}`);
+        }
+
+        function nextQ2Question() {
+            playSound('click');
+            const list = getCurrentQ2List();
+
+            if (state.q2Index < list.length - 1) {
+                state.q2Index++;
+                renderQ2Question();
+            } else {
+                playSound('fanfare');
+                alert(`🎊 Level ${state.q2Level} Preposition Quiz Complete! Great work!`);
+                if (state.q2Level < 3) {
+                    setQuiz2Level(state.q2Level + 1);
+                } else {
+                    switchTab('dashboard');
+                }
+            }
+        }
+
+
+        /* ==========================================
+           8. DASHBOARD & CERTIFICATE GENERATOR
+           ========================================== */
+        function generateCertificate() {
+            playSound('click');
+            const nameInput = document.getElementById('student-name-input').value.trim();
+            if (!nameInput) {
+                alert("Please enter a student name first!");
+                return;
+            }
+
+            document.getElementById('cert-student-name').innerText = nameInput;
+
+            const now = new Date();
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            document.getElementById('cert-date').innerText = `${monthNames[now.getMonth()]} ${now.getFullYear()}`;
+
+            const cert = document.getElementById('certificate-display');
+            cert.classList.remove('hidden');
+            cert.scrollIntoView({ behavior: 'smooth' });
+
+            playSound('fanfare');
+        }
+
+        function resetAllProgress() {
+            if (confirm("Are you sure you want to reset all quiz progress and stars?")) {
+                playSound('click');
+                state = {
+                    stars: 0,
+                    streak: 0,
+                    q1Level: 1,
+                    q1Index: 0,
+                    q1CompletedCount: 0,
+                    q2Level: 1,
+                    q2Index: 0,
+                    q2CompletedCount: 0
+                };
+                document.getElementById('user-stars').innerText = 0;
+                document.getElementById('user-streak').innerText = 0;
+                document.getElementById('dash-stars').innerText = 0;
+                document.getElementById('dash-streak').innerText = 0;
+                document.getElementById('dash-q1-completed').innerText = "0 / 45";
+                document.getElementById('dash-q2-completed').innerText = "0 / 45";
+                document.getElementById('certificate-display').classList.add('hidden');
+
+                setQuiz1Level(1);
+                setQuiz2Level(1);
+                resetSortGame();
+            }
+        }
+
+
+        /* ==========================================
+           9. APP INITIALIZATION ON WINDOW LOAD
+           ========================================== */
+        window.onload = function() {
+            // Initialize Animation Demo at Step 1
+            renderAnimStep(1);
+
+            // Initialize Quiz 1 (Jumble 45Q)
+            setQuiz1Level(1);
+
+            // Initialize Preposition Sorting Game
+            resetSortGame();
+
+            // Initialize Quiz 2 (Prepositions 45Q)
+            setQuiz2Level(1);
+        };
+    </script>
+</body>
+</html>
